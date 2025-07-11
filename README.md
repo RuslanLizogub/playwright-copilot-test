@@ -1,27 +1,27 @@
 # Playwright + Mocha + Chai + SuperAgent Template
 
-## 📦 Установка
+## 📦 Installation
 ```bash
 npm install
 ```
 
-## 🚀 Запуск тестов
+## 🚀 Run Tests
 ```bash
 npm test
 ```
 
-## 🔍 Структура
-- `tests/` — UI и API тесты
-- `utils/apiClient.js` — обёртка над SuperAgent
-- `playwright.config.js` — конфигурация Playwright
+## 🔍 Structure
+- `example.spec.js` — UI and API tests
+- `apiClient.js` — wrapper for SuperAgent
+- `playwright.config.js` — Playwright configuration
 
-## ⚙️ Команды
-- `npm test` — запустить все тесты
+## ⚙️ Commands
+- `npm test` — run all tests
 
-## ✅ Пример
-UI-тест открывает https://example.com и проверяет заголовок. API-тест проверяет JSONPlaceholder API.
+## ✅ Example
+The UI test opens https://example.com and checks the title. The API test verifies the JSONPlaceholder API.
 
-## 🤖 GitHub Copilot рекомендации
-- Используйте шаблоны describe/it
-- Предлагайте шаги сценариев ("open page", "click button")
-- Просите сгенерировать `page.locator(...)` или `expect(...)`
+## 🤖 GitHub Copilot Recommendations
+- Use `describe`/`it` templates
+- Suggest test steps ("open page", "click button")
+- Request generation of `page.locator(...)` or `expect(...)`
