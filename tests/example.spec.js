@@ -1,22 +1,29 @@
-const { chromium } = require('@playwright/test');
-const { expect } = require('chai');
-const apiClient = require('../utils/apiClient');
+const { test, expect } = require('@playwright/test');
 
-describe('Example UI + API Test', function () {
-  this.timeout(5000);
+test('Validate the first card-up element is visible', async ({ page }) => {
+  await page.goto('https://demoqa.com/');
+  const firstCardUp = page.locator('.card-up').first();
+  await firstCardUp.waitFor({ state: 'visible' });
+  await expect(firstCardUp).toBeVisible();
+});
 
-  it('should load page and validate title', async () => {
-    const browser = await chromium.launch();
-    const page = await browser.newPage();
-    await page.goto('https://example.com');
-    const title = await page.title();
-    expect(title).to.include('Example');
-    await browser.close();
-  });
+test('Validate the logo is visible', async ({ page }) => {
+  await page.goto('https://demoqa.com/');
+  const logo = page.locator('img[src="/images/Toolsqa.jpg"]');
+  await logo.waitFor({ state: 'visible' });
+  await expect(logo).toBeVisible();
+});
 
-  it('should make GET request to public API', async () => {
-    const res = await apiClient.get('https://jsonplaceholder.typicode.com/posts/1');
-    expect(res.status).to.equal(200);
-    expect(res.body).to.have.property('id', 1);
-  });
+test('Validate the banner image is visible', async ({ page }) => {
+  await page.goto('https://demoqa.com/');
+  const bannerImage = page.locator('img.banner-image');
+  await bannerImage.waitFor({ state: 'visible' });
+  await expect(bannerImage).toBeVisible();
+});
+
+test('Validate the footer text is correct', async ({ page }) => {
+  await page.goto('https://demoqa.com/');
+  const footerText = page.locator('footer span');
+  await footerText.waitFor({ state: 'visible' });
+  await expect(footerText).toHaveText('© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.');
 });

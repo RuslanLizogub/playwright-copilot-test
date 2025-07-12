@@ -4,15 +4,13 @@
   "description": "Template project using Playwright, Mocha, Chai, SuperAgent",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**/*.spec.js --timeout 5000"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.44.1",
-    "chai": "^4.3.7",
-    "mocha": "^10.2.0",
-    "superagent": "^8.1.2"
+    "@playwright/test": "^1.54.1",
+    "chai": "^4.5.0"
   }
 }
