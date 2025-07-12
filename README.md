@@ -1,27 +1,30 @@
-# Playwright + Mocha + Chai + SuperAgent Template
+# Playwright Test Template
 
 ## 📦 Installation
+Install dependencies using npm:
 ```bash
 npm install
 ```
 
 ## 🚀 Run Tests
+Run all tests:
 ```bash
 npm test
 ```
 
-## 🔍 Structure
-- `example.spec.js` — UI and API tests
-- `apiClient.js` — wrapper for SuperAgent
-- `playwright.config.js` — Playwright configuration
+## 🔍 Project Structure
+- `tests/ui/example.spec.js` — UI tests written in Playwright
+- `playwright.config.js` — Configuration for Playwright
 
 ## ⚙️ Commands
-- `npm test` — run all tests
+- `npm test` — Run all tests
+- `npm run test:ui` — Run UI tests
 
-## ✅ Example
-The UI test opens https://example.com and checks the title. The API test verifies the JSONPlaceholder API.
+## ✅ Example Test
+The UI test navigates to https://demoqa.com and validates the visibility of elements.
 
-## 🤖 GitHub Copilot Recommendations
-- Use `describe`/`it` templates
-- Suggest test steps ("open page", "click button")
-- Request generation of `page.locator(...)` or `expect(...)`
+## 🤖 Guidelines for Writing Tests
+- Use Playwright best practices
+- Prefer `getByRole()` and `getByText()` selectors over `locator()`
+- Keep test code clean and focused on the scenario
+- Avoid unnecessary comments in
