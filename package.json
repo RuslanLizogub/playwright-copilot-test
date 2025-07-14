@@ -4,7 +4,9 @@
   "description": "Template project using Playwright",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:login": "playwright test tests/ui/login.spec.js",
+    "test:example": "playwright test tests/ui/example.spec.js"
   },
   "keywords": [],
   "author": "",
