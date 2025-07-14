@@ -1,7 +1,7 @@
 {
-  "name": "playwright-mocha-chai-superagent-template",
+  "name": "playwright-template",
   "version": "1.0.0",
-  "description": "Template project using Playwright, Mocha, Chai, SuperAgent",
+  "description": "Template project using Playwright",
   "main": "index.js",
   "scripts": {
     "test": "playwright test"
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.54.1",
-    "chai": "^4.5.0"
+    "@playwright/test": "^1.54.1"
   }
 }

@@ -10,22 +10,6 @@ class HomePage {
   async navigate() {
     await this.page.goto('https://demoqa.com/');
   }
-
-  async waitForCardUp() {
-    await this.firstCardUp.waitFor({ state: 'visible' });
-  }
-
-  async waitForLogo() {
-    await this.logo.waitFor({ state: 'visible' });
-  }
-
-  async waitForBannerImage() {
-    await this.bannerImage.waitFor({ state: 'visible' });
-  }
-
-  async waitForFooterText() {
-    await this.footerText.waitFor({ state: 'visible' });
-  }
 }
 
 module.exports = HomePage;

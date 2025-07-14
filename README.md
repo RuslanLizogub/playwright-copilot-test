@@ -14,11 +14,11 @@ npm test
 
 ## 🔍 Project Structure
 - `tests/ui/example.spec.js` — UI tests written in Playwright
+- `pages/HomePage.js` — Page Object Model for the homepage
 - `playwright.config.js` — Configuration for Playwright
 
 ## ⚙️ Commands
 - `npm test` — Run all tests
-- `npm run test:ui` — Run UI tests
 
 ## ✅ Example Test
 The UI test navigates to https://demoqa.com and validates the visibility of elements.
@@ -26,5 +26,4 @@ The UI test navigates to https://demoqa.com and validates the visibility of elem
 ## 🤖 Guidelines for Writing Tests
 - Use Playwright best practices
 - Prefer `getByRole()` and `getByText()` selectors over `locator()`
-- Keep test code clean and focused on the scenario
-- Avoid unnecessary comments in
+- Keep test code clean and focused on the test scenario
