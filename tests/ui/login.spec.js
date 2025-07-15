@@ -1,19 +1,34 @@
 const { test, expect } = require('@playwright/test');
-const LoginPage = require('../../pages/LoginPage');
-const LogoutPage = require('../../pages/LogoutPage');
+const { LoginPage } = require('../../pages/LoginPage');
 
-test('Login, verify success, logout, and verify logout', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const logoutPage = new LogoutPage(page);
+test.describe('Login Tests', () => {
+  let loginPage;
 
-  // Navigate to the login page
-  await loginPage.navigate();
+  test.beforeEach(async ({ page }) => {
+    loginPage = new LoginPage(page);
+    await loginPage.navigate();
+  });
 
-  // Perform login
-  await loginPage.login();
-  await expect(logoutPage.successMessage).toHaveText(/You logged into a secure area!/);
+  test('should display login form', async () => {
+    const isFormVisible = await loginPage.isLoginFormVisible();
+    expect(isFormVisible).toBe(true);
+  });
 
-  // Perform logout
-  await logoutPage.logout();
-  await expect(logoutPage.successMessage).toHaveText(/You logged out of the secure area!/);
+  test('should login with valid credentials', async () => {
+    await loginPage.login('testuser', 'Test@123');
+    
+    const isLoggedIn = await loginPage.isLoggedIn();
+    expect(isLoggedIn).toBe(true);
+    
+    const username = await loginPage.getLoggedInUsername();
+    expect(username).toBe('testuser');
+  });
+
+  test('should logout successfully', async () => {
+    await loginPage.login('testuser', 'Test@123');
+    await loginPage.logout();
+    
+    const isFormVisible = await loginPage.isLoginFormVisible();
+    expect(isFormVisible).toBe(true);
+  });
 });

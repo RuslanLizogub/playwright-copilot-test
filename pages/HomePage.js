@@ -1,15 +1,43 @@
-class HomePage {
+const { BasePage } = require('./BasePage');
+
+class HomePage extends BasePage {
   constructor(page) {
-    this.page = page;
-    this.firstCardUp = page.locator('.card-up').first();
-    this.logo = page.locator('img[src="/images/Toolsqa.jpg"]');
-    this.bannerImage = page.locator('img.banner-image');
-    this.footerText = page.locator('footer span');
+    super(page);
+    this.url = 'https://demoqa.com/';
+    
+    this.elementsCard = page.locator('.card-body').filter({ hasText: 'Elements' });
+    this.formsCard = page.locator('.card-body').filter({ hasText: 'Forms' });
+    this.alertsCard = page.locator('.card-body').filter({ hasText: 'Alerts, Frame & Windows' });
+    this.widgetsCard = page.locator('.card-body').filter({ hasText: 'Widgets' });
+    this.interactionsCard = page.locator('.card-body').filter({ hasText: 'Interactions' });
+    this.bookStoreCard = page.locator('.card-body').filter({ hasText: 'Book Store Application' });
+    this.banner = page.locator('.banner-image');
   }
 
   async navigate() {
-    await this.page.goto('https://demoqa.com/');
+    await this.page.goto(this.url);
+    await this.waitForLoadState();
+  }
+
+  async clickElementsCard() {
+    await this.elementsCard.click();
+  }
+
+  async isElementsCardVisible() {
+    return await this.elementsCard.isVisible();
+  }
+
+  async isFormsCardVisible() {
+    return await this.formsCard.isVisible();
+  }
+
+  async isAlertsCardVisible() {
+    return await this.alertsCard.isVisible();
+  }
+
+  async isBannerVisible() {
+    return await this.banner.isVisible();
   }
 }
 
-module.exports = HomePage;
+module.exports = { HomePage };

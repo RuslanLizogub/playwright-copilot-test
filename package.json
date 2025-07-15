@@ -1,17 +1,28 @@
 {
-  "name": "playwright-template",
+  "name": "playwright-test-framework",
   "version": "1.0.0",
-  "description": "Template project using Playwright",
-  "main": "index.js",
+  "description": "Modern Playwright test automation framework with best practices",
   "scripts": {
     "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
     "test:login": "playwright test tests/ui/login.spec.js",
-    "test:example": "playwright test tests/ui/example.spec.js"
+    "test:example": "playwright test tests/ui/example.spec.js",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=mobile-chrome",
+    "report": "playwright show-report",
+    "lint": "eslint tests/ pages/ --ext .js",
+    "lint:fix": "eslint tests/ pages/ --ext .js --fix",
+    "test:ci": "npm run lint && playwright test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["playwright", "testing", "automation", "e2e", "ui-testing"],
+  "author": "QA Team",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.54.1"
+    "@playwright/test": "^1.54.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-playwright": "^1.6.2"
   }
 }

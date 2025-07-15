@@ -2,5 +2,17 @@
   "validUser": {
     "username": "tomsmith",
     "password": "SuperSecretPassword!"
+  },
+  "invalidUser": {
+    "username": "invaliduser",
+    "password": "wrongpassword"
+  },
+  "emptyCredentials": {
+    "username": "",
+    "password": ""
+  },
+  "urls": {
+    "loginPage": "https://the-internet.herokuapp.com/login",
+    "securePage": "https://the-internet.herokuapp.com/secure"
   }
 }
