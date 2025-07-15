@@ -16,7 +16,8 @@ class HomePage extends BasePage {
 
   async navigate() {
     await this.page.goto(this.url);
-    await this.waitForLoadState();
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForSelector('.card-body', { timeout: 10000 });
   }
 
   async clickElementsCard() {

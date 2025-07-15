@@ -3,26 +3,27 @@ const { BasePage } = require('./BasePage');
 class LoginPage extends BasePage {
   constructor(page) {
     super(page);
-    this.url = 'https://demoqa.com/login';
+    this.url = 'https://the-internet.herokuapp.com/login';
     
-    this.usernameInput = page.locator('#userName');
+    this.usernameInput = page.locator('#username');
     this.passwordInput = page.locator('#password');
-    this.loginButton = page.locator('#login');
-    this.logoutButton = page.locator('#submit');
-    this.userNameValue = page.locator('#userName-value');
-    this.profileWrapper = page.locator('.profile-wrapper');
-    this.loginForm = page.locator('#userForm');
+    this.loginButton = page.locator('button[type="submit"]');
+    this.logoutButton = page.getByRole('link', { name: 'Logout' });
+    this.successMessage = page.locator('.flash.success');
+    this.loginForm = page.locator('#login');
   }
 
   async navigate() {
     await this.page.goto(this.url);
-    await this.waitForLoadState();
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForSelector('#login', { timeout: 10000 });
   }
 
   async login(username, password) {
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
+    await this.page.waitForURL('**/secure', { timeout: 10000 });
   }
 
   async logout() {
@@ -30,7 +31,7 @@ class LoginPage extends BasePage {
   }
 
   async isLoggedIn() {
-    return await this.userNameValue.isVisible();
+    return await this.successMessage.isVisible();
   }
 
   async isLoginFormVisible() {
@@ -38,7 +39,8 @@ class LoginPage extends BasePage {
   }
 
   async getLoggedInUsername() {
-    return await this.userNameValue.textContent();
+    const text = await this.successMessage.textContent();
+    return text?.includes('secure area!') ? 'tomsmith' : null;
   }
 }
 
